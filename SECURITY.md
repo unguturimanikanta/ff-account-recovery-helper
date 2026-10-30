@@ -1,13 +1,38 @@
-# Security & Privacy
+# Security Policy
 
-## Never submit secrets
+## Purpose
 
-Do not put passwords, OTPs, recovery codes, cookies, session tokens, access tokens, or payment credentials into this project.
+This project is a privacy-focused helper for preparing legitimate Free Fire account recovery requests.
 
-## Scope
+It does **not** recover accounts, bypass authentication, access accounts, or obtain credentials.
 
-This project is only a preparation and education tool for legitimate account recovery. It must not be used to bypass authentication, obtain unauthorized access, or recover an account that does not belong to the user.
+## Privacy
 
-## Reporting a vulnerability
+Never enter or submit:
 
-If you find a security issue in this project, report it without including real credentials or private account information.
+- Passwords
+- OTPs
+- Recovery codes
+- Session tokens
+- Access tokens
+- Cookies
+- Payment information
+- Another person's private information
+
+The website is designed to process the recovery-preparation text locally in the user's browser.
+
+## Account Recovery
+
+Use this project only for an account that you legitimately own or are authorized to recover.
+
+Always use the official support process for account recovery.
+
+Do not give your credentials to people claiming they can recover your account.
+
+## Security Issues
+
+If you discover a security issue in this project, please report it without including real passwords, OTPs, tokens, cookies, or other private information.
+
+## Disclaimer
+
+This is an independent community project and is not affiliated with or endorsed by Garena or Free Fire.
