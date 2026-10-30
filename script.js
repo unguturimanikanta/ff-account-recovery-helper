@@ -2,34 +2,118 @@ const problem = document.getElementById("problem");
 const details = document.getElementById("details");
 const output = document.getElementById("output");
 
-document.getElementById("generate").addEventListener("click", () => {
-  const labels = {
-    hacked: "I believe my account may have been compromised.",
-    login: "I am unable to access my account.",
-    email: "The linked account or email details appear to have changed.",
-    lost: "I have lost access to the account linked to my game account.",
-    other: "I am experiencing an account-access problem."
-  };
+const generateBtn = document.getElementById("generate");
+const copyBtn = document.getElementById("copy");
+const clearBtn = document.getElementById("clear");
 
-  const description = details.value.trim() || "I would like help verifying and recovering access to my account.";
-  output.value =
-`Hello Support Team,
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+const counter = document.getElementById("counter");
+const privacyStatus = document.getElementById("privacyStatus");
 
-${labels[problem.value]}
+const checks = document.querySelectorAll(
+  '.check input[type="checkbox"]'
+);
 
-Details:
-${description}
 
-I am the legitimate account owner and can provide appropriate ownership information through the official support process.
+// -------------------------
+// Progress
+// -------------------------
 
-Please let me know what information is required to verify ownership and restore access.
+function updateProgress() {
+  let completed = 0;
 
-Thank you.`;
+  checks.forEach((check) => {
+    if (check.checked) {
+      completed++;
+    }
+  });
+
+  if (details.value.trim().length > 20) {
+    completed++;
+  }
+
+  const total = checks.length + 1;
+  const percent = Math.round((completed / total) * 100);
+
+  progressText.textContent = percent + "%";
+  progressBar.style.width = percent + "%";
+}
+
+checks.forEach((check) => {
+  check.addEventListener("change", updateProgress);
 });
 
-document.getElementById("copy").addEventListener("click", async () => {
-  if (!output.value) return;
-  await navigator.clipboard.writeText(output.value);
-  document.getElementById("copy").textContent = "Copied ✓";
-  setTimeout(() => document.getElementById("copy").textContent = "Copy draft", 1500);
+details.addEventListener("input", () => {
+  counter.textContent = `${details.value.length} / 1200`;
+  checkPrivacy();
+  updateProgress();
 });
+
+
+// -------------------------
+// Sensitive information check
+// -------------------------
+
+const sensitivePatterns = [
+  /password/i,
+  /passwd/i,
+  /\botp\b/i,
+  /one[- ]?time password/i,
+  /recovery code/i,
+  /session token/i,
+  /access token/i,
+  /\bcookie\b/i,
+  /\bsecret\b/i
+];
+
+function containsSensitiveInformation(text) {
+  return sensitivePatterns.some((pattern) =>
+    pattern.test(text)
+  );
+}
+
+function checkPrivacy() {
+  const text = details.value;
+
+  if (containsSensitiveInformation(text)) {
+    privacyStatus.textContent =
+      "⚠️ Sensitive information detected. Remove it before generating.";
+
+    privacyStatus.style.color = "#ffb4b4";
+  } else {
+    privacyStatus.textContent =
+      "🔒 Your text stays in your browser.";
+
+    privacyStatus.style.color = "";
+  }
+}
+
+
+// -------------------------
+// Generate support draft
+// -------------------------
+
+generateBtn.addEventListener("click", () => {
+
+  const description = details.value.trim();
+
+  if (!description) {
+    alert("Please describe what happened first.");
+    details.focus();
+    return;
+  }
+
+  if (containsSensitiveInformation(description)) {
+    alert(
+      "Sensitive information detected.\n\n" +
+      "Please remove passwords, OTPs, recovery codes, " +
+      "tokens, cookies, or secrets before generating the draft."
+    );
+    return;
+  }
+
+  const selectedProblem =
+    problem.options[problem.selectedIndex].text;
+
+  const draft = `Hello Support
