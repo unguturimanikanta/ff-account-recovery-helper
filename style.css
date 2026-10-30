@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: #0b1020;
+  color: #eef2ff;
+}
+.container { max-width: 760px; margin: auto; padding: 28px 18px 40px; }
+.hero { padding: 20px 0; }
+.badge {
+  display: inline-block; padding: 7px 11px; border-radius: 999px;
+  background: #17213d; color: #a9c7ff; font-size: 13px;
+}
+h1 { font-size: clamp(30px, 7vw, 48px); margin: 16px 0 8px; }
+.hero p { color: #b8c1d9; line-height: 1.6; }
+.card {
+  background: #121a2d; border: 1px solid #26324d;
+  border-radius: 18px; padding: 22px;
+}
+h2 { font-size: 19px; margin-top: 24px; }
+select, textarea {
+  width: 100%; border: 1px solid #34415f; border-radius: 12px;
+  background: #0c1324; color: #fff; padding: 12px; font: inherit;
+}
+label { display: block; padding: 8px 0; color: #d5dcf0; }
+.warning {
+  margin: 18px 0; padding: 14px; border-radius: 12px;
+  background: #2a2110; border: 1px solid #66501d; color: #f5df9c;
+  line-height: 1.5;
+}
+button {
+  margin-top: 12px; width: 100%; padding: 13px; border: 0;
+  border-radius: 12px; background: #5b8cff; color: white;
+  font-weight: 700; font-size: 15px; cursor: pointer;
+}
+button.secondary { background: #26324d; }
+#output { margin-top: 14px; }
+footer { color: #8994ad; text-align: center; font-size: 13px; margin-top: 22px; }

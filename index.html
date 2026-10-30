@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Fire Account Recovery Helper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <span class="badge">🔐 Privacy-first</span>
+      <h1>Free Fire Account Recovery Helper</h1>
+      <p>Prepare a clear, safe recovery request without sharing passwords, OTPs, or session information.</p>
+    </section>
+
+    <section class="card">
+      <h2>1. What happened?</h2>
+      <select id="problem">
+        <option value="hacked">I think my account was compromised</option>
+        <option value="login">I cannot log in</option>
+        <option value="email">My linked email/account details changed</option>
+        <option value="lost">I lost access to my linked account</option>
+        <option value="other">Other account-access problem</option>
+      </select>
+
+      <h2>2. Recovery checklist</h2>
+      <label><input type="checkbox"> I know my in-game nickname / UID.</label>
+      <label><input type="checkbox"> I can describe approximately when the problem started.</label>
+      <label><input type="checkbox"> I have legitimate account-ownership evidence.</label>
+      <label><input type="checkbox"> I will use the official support channel.</label>
+
+      <div class="warning">
+        <strong>Never enter here:</strong> password, OTP, recovery code, cookie, session token, or someone else's private information.
+      </div>
+
+      <h2>3. Generate a support draft</h2>
+      <textarea id="details" rows="5" placeholder="Briefly describe what happened. Do not include passwords or OTPs."></textarea>
+      <button id="generate">Generate safe draft</button>
+
+      <textarea id="output" rows="10" readonly placeholder="Your draft will appear here..."></textarea>
+      <button class="secondary" id="copy">Copy draft</button>
+    </section>
+
+    <footer>
+      <p>Independent community project. Not affiliated with or endorsed by Garena or Free Fire.</p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
